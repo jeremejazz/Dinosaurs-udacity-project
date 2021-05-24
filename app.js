@@ -24,10 +24,10 @@ Dinosaur.prototype = Object.create(Creature.prototype);
 Dinosaur.prototype.compare_weight = function(human){
     let diff = Math.abs(this.weight - human.weight);
     if (this.weight > human.weight){
-        this.info = this.species +  " weighs " + diff + " lbs more than " + human.name; 
+        this.info = this.species +  " weighs " + diff + " lbs more than " + human.name;
 
     }else if (this.weight < human.weight){
-        this.info = this.species + " weighs " + diff + " lbs less than " + human.name; 
+        this.info = this.species + " weighs " + diff + " lbs less than " + human.name;
     }else if (this.weight === human.weight) {
         this.info = "Both weighs the same";
     }
@@ -38,10 +38,10 @@ Dinosaur.prototype.compare_weight = function(human){
 Dinosaur.prototype.compare_height = function(human){
     let diff = Math.abs(this.height - human.height);
     if (this.height > human.height){
-        this.info = this.species +  " is " + diff + " inches taller than " + human.name; 
+        this.info = this.species +  " is " + diff + " inches taller than " + human.name;
 
     }else if (this.height < human.height){
-        this.info = this.species + " is " + diff + " inches shorter than " + human.name; 
+        this.info = this.species + " is " + diff + " inches shorter than " + human.name;
     }else if (this.height === human.height) {
         this.info = "Both heights the same";
     }
@@ -51,7 +51,7 @@ Dinosaur.prototype.compare_height = function(human){
 Dinosaur.prototype.compare_diet = function(human){
 
     if(this.diet.toLowerCase() === human.diet.toLowerCase()){
-        this.info = "Same diet with " + human.name + " as " + this.diet
+        this.info = "Same diet with " + human.name + " as " + this.diet;
     }else{
         this.info = this.species + " is a " + this.diet;
     }
