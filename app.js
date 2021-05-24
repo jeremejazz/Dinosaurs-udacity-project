@@ -185,17 +185,16 @@ const App = {
         this.loadDinos();
 
     },
-    main: function () {
+    init: function () {
         this.animals = [];
         
-        // this.loadDinos(); //later
 
     }
 }
 
 
 
-App.main();
+App.init();
 
 
 // Use IIFE to get human data from form
