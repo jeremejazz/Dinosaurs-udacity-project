@@ -172,3 +172,12 @@ select {
     display: block;
     font-size: 0.7em;
 }
+
+/*fade*/
+.show {
+    transition: opacity 400ms;
+  }
+.hide {
+opacity: 0;
+transition: opacity 400ms;
+}
