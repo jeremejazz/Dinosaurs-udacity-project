@@ -27,7 +27,7 @@ Dinosaur.prototype.compare_weight = function(human){
         this.info = this.species +  " weighs " + diff + " lbs more than " + human.name; 
 
     }else if (this.weight < human.weight){
-        this.info = human.name + " weighs " + diff + " lbs more than a" + this.species; 
+        this.info = this.species + " weighs " + diff + " lbs less than " + human.name; 
     }else if (this.weight === human.weight) {
         this.info = "Both weighs the same";
     }
@@ -40,7 +40,7 @@ Dinosaur.prototype.compare_height = function(human){
         this.info = this.species +  " is " + diff + " inches taller than " + human.name; 
 
     }else if (this.height < human.height){
-        this.info = human.name + " is " + diff + " inches taller than a " + this.species; 
+        this.info = this.species + " is " + diff + " inches shorter than " + human.name; 
     }else if (this.height === human.height) {
         this.info = "Both heights the same";
     }
