@@ -27,7 +27,7 @@ Dinosaur.prototype.compare_weight = function(human){
         this.info = this.species +  "weighs " + diff + " lbs more than " + human.name; 
 
     }else if (this.weight < human.weight){
-        this.info = human.name + " weighs " + diff + " lbs more than " + this.name; 
+        this.info = human.name + " weighs " + diff + " lbs more than " + human.name; 
     }else if (this.weight === human.weight) {
         this.info = "Both weighs the same";
     }
@@ -40,7 +40,7 @@ Dinosaur.prototype.compare_height = function(human){
         this.info = this.species +  " is " + diff + " inches taller than " + human.name; 
 
     }else if (this.height < human.height){
-        this.info = human.name + " is " + diff + " inches taller than " + this.name; 
+        this.info = human.name + " is " + diff + " inches taller than " + human.name; 
     }else if (this.height === human.height) {
         this.info = "Both heights the same";
     }
@@ -48,10 +48,10 @@ Dinosaur.prototype.compare_height = function(human){
 
 Dinosaur.prototype.compare_diet = function(human){
 
-    if(this.diet === human.diet){
-        this.info = "Both diet are the same."
+    if(this.diet.toLowerCase === human.diet.toLowerCase){
+        this.info = "Same diet with " + human.name + " as " + this.diet
     }else{
-        this.info = this.diet;
+        this.info = "Different diet which is " + this.diet
     }
 };
 
@@ -80,7 +80,10 @@ Human.prototype = Object.create(Creature.prototype);
 Human.prototype.generate_tile = function(){
     
     let tileStr = this.tileWrapper[0];
-    tileStr += '';
+    tileStr += '<h3>' + this.name + '</h3>';
+    tileStr += '<img src="images/human.png" alt=""></img>';
+    tileStr += ' <p></p>';
+
     tileStr += this.tileWrapper[1];
 
     return tileStr;
@@ -146,8 +149,8 @@ const App = {
     let tiles = "";
     for (let x = 0; x < this.animals.length; x++){ //9x9 tiles
         tiles += this.animals[x].generate_tile();
-        //insert human card on 5
-        if (x === 5){
+        //insert human card on center
+        if (x === 3){
             tiles += this.human.generate_tile();
         }
     }
