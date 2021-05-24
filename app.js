@@ -82,7 +82,7 @@ Human.prototype.generate_tile = function(){
     let tileStr = this.tileWrapper[0];
     tileStr += '<h3>' + this.name + '</h3>';
     tileStr += '<img src="images/human.png" alt=""></img>';
-    tileStr += ' <p></p>';
+
 
     tileStr += this.tileWrapper[1];
 
@@ -174,9 +174,10 @@ const App = {
         let inches = document.getElementById('inches').value;
         let weight = document.getElementById('weight').value;
         let diet = document.getElementById('diet').value;
-        //basic validation
+        //super basic validation
         if(name === "" || feet === "" || inches === "" || weight === "" || diet === ""){
-            alert("Incomplete fields")
+            alert("Incomplete fields");
+            return false;
         }
         let height = (feet * 12) + inches;
         this.human = new Human(name, weight, height, diet);
