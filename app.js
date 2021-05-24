@@ -8,8 +8,7 @@ function Creature(species, weight, height, diet){
     this.tileWrapper = ['<div class="grid-item">', '</div>'];
 }
 
-
-    // Create Dino Constructor
+// Create Dino Constructor
 function Dinosaur(species, weight, height, diet, where, when, fact){
     Creature.call(this, species, weight, height, diet);
     this.where = where;
@@ -21,6 +20,7 @@ function Dinosaur(species, weight, height, diet, where, when, fact){
 
 Dinosaur.prototype = Object.create(Creature.prototype);
 
+// Create Dino Compare Method 1
 Dinosaur.prototype.compare_weight = function(human){
     let diff = Math.abs(this.weight - human.weight);
     if (this.weight > human.weight){
@@ -34,6 +34,7 @@ Dinosaur.prototype.compare_weight = function(human){
 
 };
 
+// Create Dino Compare Method 2
 Dinosaur.prototype.compare_height = function(human){
     let diff = Math.abs(this.height - human.height);
     if (this.height > human.height){
@@ -46,6 +47,7 @@ Dinosaur.prototype.compare_height = function(human){
     }
 };
 
+// Create Dino Compare Method 3
 Dinosaur.prototype.compare_diet = function(human){
 
     if(this.diet.toLowerCase() === human.diet.toLowerCase()){
@@ -55,6 +57,7 @@ Dinosaur.prototype.compare_diet = function(human){
     }
 };
 
+// Generate DOM tile
 Dinosaur.prototype.generate_tile = function(){
     let tileStr = this.tileWrapper[0];
     tileStr += '<h3>' + this.species + '</h3>';
@@ -64,12 +67,10 @@ Dinosaur.prototype.generate_tile = function(){
     tileStr += this.tileWrapper[1];
 
     return tileStr;
-    
+
 };
-    // Create Dino Objects
 
 
-    // Create Human Object
 function Human(name, weight, height, diet){
     Creature.call(this, "human", weight, height, diet);
     this.name = name;
@@ -78,24 +79,15 @@ function Human(name, weight, height, diet){
 Human.prototype = Object.create(Creature.prototype);
 
 Human.prototype.generate_tile = function(){
-    
     let tileStr = this.tileWrapper[0];
     tileStr += '<h3>' + this.name + '</h3>';
     tileStr += '<img src="images/human.png" alt=""></img>';
-
-
     tileStr += this.tileWrapper[1];
-
     return tileStr;
 };
 
-
-    
-
-
-    
 // On button click, prepare and display infographic
-const App = {
+let App = {
     loadDinos: function () {
         let self = this;
         self.animals = [];
@@ -107,9 +99,9 @@ const App = {
                 return response.json();
             })
             .then(function (data){
-                
                 let dinos = data.Dinos;
                 dinos.forEach(function (item) {
+                // Create Dino Objects
                 let dino = new Dinosaur(item.species, item.weight, item.height, item.diet, item.where, item.when, item.fact);
                 self.animals.push(dino);
 
@@ -135,11 +127,9 @@ const App = {
             }
         }
 
-        
         this.animals[randomIdx[0]].compare_height(this.human);
         this.animals[randomIdx[1]].compare_weight(this.human);
         this.animals[randomIdx[2]].compare_diet(this.human);
-        
 
     },
     generateTiles: function () {
@@ -160,7 +150,6 @@ const App = {
     grid.classList.remove("show");
     grid.classList.remove("hide");
     // Remove form from screen
-
         let dinocompare = document.getElementById('dino-compare');
         dinocompare.classList.add("hide");
         setTimeout(function(){
@@ -168,7 +157,7 @@ const App = {
         },400);
     },
     btnClick: function(){
-        
+
         let name = document.getElementById('name').value;
         let feet = parseFloat(document.getElementById('feet').value);
         let inches = parseFloat(document.getElementById('inches').value);
@@ -180,6 +169,8 @@ const App = {
             return false;
         }
         let height = (feet * 12) + inches;
+
+        // Create Human Object
         this.human = new Human(name, weight, height, diet);
 
         this.loadDinos();
@@ -187,8 +178,6 @@ const App = {
     },
     init: function () {
         this.animals = [];
-        
-
     }
 }
 
