@@ -24,10 +24,10 @@ Dinosaur.prototype = Object.create(Creature.prototype);
 Dinosaur.prototype.compare_weight = function(human){
     let diff = Math.abs(this.weight - human.weight);
     if (this.weight > human.weight){
-        this.info = this.species +  "weighs " + diff + " lbs more than " + human.name; 
+        this.info = this.species +  " weighs " + diff + " lbs more than " + human.name; 
 
     }else if (this.weight < human.weight){
-        this.info = human.name + " weighs " + diff + " lbs more than " + human.name; 
+        this.info = human.name + " weighs " + diff + " lbs more than a" + this.species; 
     }else if (this.weight === human.weight) {
         this.info = "Both weighs the same";
     }
@@ -40,7 +40,7 @@ Dinosaur.prototype.compare_height = function(human){
         this.info = this.species +  " is " + diff + " inches taller than " + human.name; 
 
     }else if (this.height < human.height){
-        this.info = human.name + " is " + diff + " inches taller than " + human.name; 
+        this.info = human.name + " is " + diff + " inches taller than a " + this.species; 
     }else if (this.height === human.height) {
         this.info = "Both heights the same";
     }
@@ -48,10 +48,10 @@ Dinosaur.prototype.compare_height = function(human){
 
 Dinosaur.prototype.compare_diet = function(human){
 
-    if(this.diet.toLowerCase === human.diet.toLowerCase){
+    if(this.diet.toLowerCase() === human.diet.toLowerCase()){
         this.info = "Same diet with " + human.name + " as " + this.diet
     }else{
-        this.info = "Different diet which is " + this.diet
+        this.info = this.species + " is a " + this.diet;
     }
 };
 
@@ -170,9 +170,9 @@ const App = {
     btnClick: function(){
         
         let name = document.getElementById('name').value;
-        let feet = document.getElementById('feet').value;
-        let inches = document.getElementById('inches').value;
-        let weight = document.getElementById('weight').value;
+        let feet = parseFloat(document.getElementById('feet').value);
+        let inches = parseFloat(document.getElementById('inches').value);
+        let weight = parseFloat(document.getElementById('weight').value);
         let diet = document.getElementById('diet').value;
         //super basic validation
         if(name === "" || feet === "" || inches === "" || weight === "" || diet === ""){
